@@ -1,0 +1,39 @@
+﻿@model DeAn.Models.Product
+<head>
+    <style>
+        img {
+            height: 300px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+@{
+    ViewBag.Title = "PVDetailProdInFo";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <hr />
+
+    <div class="dl-horizontal">
+        <div class="col-md-3">
+            <img src=" @Html.DisplayFor(model => model.ProductImage)" />
+        </div> 
+        <div class="col-md-9">
+            <dl>
+                <dt>Tên sản phẩm</dt>
+                <dd> @Html.DisplayFor(model => model.ProductName) </dd>
+                <dt>Mô tả</dt>
+                <dd> @Html.DisplayFor(model => model.ProductDescription)</dd>
+                <dt> Đơn giá</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductPrice)
+                </dd>
+                <dt>Danh mục </dt>
+                <dd> @Html.DisplayFor(model => model.Category.CategoryName)</dd>
+
+            </dl>
+        </div>
+
+    </div>
+</div>
+

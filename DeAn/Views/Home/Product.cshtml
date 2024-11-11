@@ -1,0 +1,211 @@
+﻿@model DeAn.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*<link rel="stylesheet" type="text/css" href="~/Content/myStyle/StyleSP.css" />*@
+}
+<style>
+   
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px; /* Điều chỉnh padding cho header */
+        border-bottom: 2px solid #eaeaea; /* Thay đổi độ dày đường viền */
+    }
+
+        .header img {
+            height: 60px; /* Điều chỉnh kích thước logo */
+            transition: transform 0.3s; /* Hiệu ứng khi hover */
+        }
+
+            .header img:hover {
+                transform: scale(1.05); /* Phóng to logo khi hover */
+            }
+
+    .nav {
+        display: flex;
+        gap: 30px; /* Tăng khoảng cách giữa các mục menu */
+    }
+
+        .nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            padding: 10px 15px; /* Thêm padding cho các liên kết */
+            border-radius: 5px; /* Thêm bo góc cho các liên kết */
+            transition: background-color 0.3s; /* Hiệu ứng khi hover */
+        }
+
+            .nav a:hover,
+            .nav a.active {
+                background-color: #f0f0f0; /* Đổi màu nền khi hover hoặc active */
+                font-weight: 700; /* Làm nổi bật văn bản khi hover hoặc active */
+            }
+    /* Thanh tìm kiếm */
+    .search-cart {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+        .search-cart input {
+            padding: 10px; /* Tăng kích thước padding */
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            font-size: 16px; /* Tăng kích thước phông chữ */
+            transition: border-color 0.3s; /* Hiệu ứng khi focus */
+        }
+
+            .search-cart input:focus {
+                border-color: #e63946; /* Đổi màu viền khi focus */
+                outline: none; /* Ẩn outline */
+            }
+
+    search-cart .cart {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .search-cart .cart i {
+        font-size: 24px; /* Tăng kích thước biểu tượng giỏ hàng */
+        color: #000;
+    }
+
+    .search-cart .cart .badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: red;
+        color: #fff;
+        border-radius: 50%;
+        padding: 2px 5px;
+        font-size: 12px;
+    }
+
+
+    .banner {
+        position: relative;
+        width: auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+      
+        }
+
+    .banner-images img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+
+        .banner-images img.active {
+            display: block;
+        }
+
+    .banner-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+
+</style>
+<html>
+<head>
+    <title>
+        RYAN-Sản phẩm
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="~/Content/MyCss/SanPham.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
+        <div class="nav">
+            <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+            <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+  
+        </div>
+        <div class="search-cart">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+
+                <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
+
+            </div>
+            <div>
+                <a href="@Url.Action("Login","Account",null)">
+                    @if (Session["UserName"] != null)
+                    {
+                        <p>@Session["UserName"]!</p> }
+                    else
+                    {
+                        <p>Đăng nhập</p>}
+                </a>
+            </div>
+            <a href="@Url.Action("MyOrders","Order",null)">Lịch sử mua hàng</a>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-images">
+            <img src="~/Content/Image/Banner.png" alt="Banner Image 1" class="active" />
+            <img src="~/Content/Image/Banner1.png" alt="Banner Image 2" />
+            <div class="text" style="color:#fff" id="bannerText">NEW COLLECTION</div>
+            <!-- Thêm hình ảnh khác nếu cần -->
+        </div>
+        <div class="banner-controls">
+            <button class="prev" onclick="changeBanner(-1)">&#10094;</button>
+            <button class="next" onclick="changeBanner(1)">&#10095;</button>
+        </div>
+    </div>
+
+
+
+    @Html.Partial("PVNewProduct", Model)
+    @Html.Partial("PVFeatureProduct", Model)
+    <script>
+        let currentIndex = 0;
+
+        function changeBanner(direction) {
+            const banners = document.querySelectorAll('.banner-images img');
+            banners[currentIndex].classList.remove('active');
+
+            currentIndex += direction;
+
+            if (currentIndex >= banners.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = banners.length - 1;
+            }
+
+            banners[currentIndex].classList.add('active');
+        }
+
+        setInterval(() => changeBanner(1), 5000);
+    </script>
+
+</body>
+</html>

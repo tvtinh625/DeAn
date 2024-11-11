@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- Hiển thị tên người dùng khi đã đăng nhập -->
+            @if (Session["UserName"] != null)
+            {
+<p>Chào, @Session["UserName"]!</p> }
+            else
+            {
+<p>Chào, khách!</p>            }
+        </header>
+
+        @RenderBody() <!-- Vùng nội dung động sẽ được thay đổi khi chuyển trang -->
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

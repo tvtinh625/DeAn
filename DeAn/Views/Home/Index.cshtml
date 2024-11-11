@@ -1,0 +1,100 @@
+﻿@model DeAn.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Customer Home Page";
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />
+}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RYAN-Trang chủ</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+        <link href="~/Content/MyCss/TrangChu.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="header">
+            <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
+            <div class="nav">
+                <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+                <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+
+            </div>
+            <div class="search-cart">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+                <div class="cart">
+
+                    <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
+                </div>
+
+                @if (Session["UserName"] != null)
+                {
+                    <p><a href="@Url.Action("Logout", "Account")">@Session["UserName"]</a></p>}
+                else
+                {
+                    <p><a href="@Url.Action("Logout", "Account")">@Session["UserName"]</a></p>
+                }
+            </div>
+          
+               
+
+            
+        </div>
+    <div class="banner">
+
+        <div class="banner-images">
+            <img src="~/Content/Image/bia.png" alt="Banner Image 1" class="active" />
+            <img src="~/Content/Image/bia2.png" alt="Banner Image 2" />
+            <!-- Thêm hình ảnh khác nếu cần -->
+        </div>
+        <div class="banner-controls">
+            <button class="prev" onclick="changeBanner(-1)">&#10094;</button>
+            <button class="next" onclick="changeBanner(1)">&#10095;</button>
+        </div>
+    </div>
+    <hr />
+    
+
+    @*@Html.Partial("PVFeatureProduct", Model)
+
+    @Html.Partial("PVNewProduct", Model)*@
+
+    <div class="footer">
+        <p>© 2024 RYAN. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">Chính sách bảo mật</a> |
+            <a href="#">Điều khoản sử dụng</a> |
+            <a href="#">Hỗ trợ</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>Liên hệ: 0909-xxx-xxx | Email: support@ryan.vn</p>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function changeBanner(direction) {
+            const banners = document.querySelectorAll('.banner-images img');
+            banners[currentIndex].classList.remove('active');
+
+            currentIndex += direction;
+
+            if (currentIndex >= banners.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = banners.length - 1;
+            }
+
+            banners[currentIndex].classList.add('active');
+        }
+
+        setInterval(() => changeBanner(1), 5000);
+    </script>
+    <!-- Form tìm kiếm -->
+
+</body>
+</html>

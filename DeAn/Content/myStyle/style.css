@@ -1,0 +1,36 @@
+﻿section h2{
+    color: red;
+    text-align:center;
+}
+.feature-container {
+    display: flex;
+    gap: 10px;
+    inset-inline: initial;
+  
+}
+
+.container-fluid ListProduct {
+    align-content: center;
+}
+.fproduct-item {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.fproduct-item a img{
+    width:60%;
+}
+.list-container {
+    display: flex;
+    gap: 20px;
+}
+.lproduct-item {
+    gap: 10px;
+   align-items:center;
+   align-content:end;
+    padding: 20px;
+}
+.lproduct-item a img {
+        width: 60%;
+    }

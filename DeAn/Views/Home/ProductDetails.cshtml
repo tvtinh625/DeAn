@@ -1,0 +1,102 @@
+﻿@model DeAn.Models.ViewModel.ProductDetailsVM
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerDetailProduct.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />
+}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYAN-Trang chủ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link href="~/Content/MyCss/TrangChu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
+        <div class="nav">
+            <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+            <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+
+        </div>
+        <div class="search-cart">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
+            </div>
+            <div>
+                <a href="@Url.Action("Login","Account",null)">
+                    @if (Session["UserName"] != null)
+                    {
+                        <p>@Session["UserName"]!</p> }
+                    else
+                    {
+                        <p>Đăng nhập</p>}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pro">
+        <div class="div-horizontal">
+            @* Khối bên trái *@
+            <div class="col-md-3 pro-section">
+                <img src="@Model.product.ProductImage" />
+            </div>
+            @* Khối ở giữa *@
+        <div class="col-md-5 pro-section">
+            @* Phần thông tin sp *@
+            <div>
+                <h4><strong>@Html.DisplayFor(model => model.product.ProductName)</strong></h4>
+                <p class="pro-sale">Đã bán: &nbsp; @Model.product.OrderDetails.Count</p>
+                <p class="pro-price">@Model.product.ProductPrice.ToString("C")</p>
+                <p>Danh mục: &nbsp;@Model.product.Category.CategoryName</p>
+                <hr />
+                <h5> <strong>Chi tiết</strong></h5>
+                <p>@Model.product.ProductDescription</p>
+            </div>
+            @* Khối realated Product *@
+            @*<div> @Html.Partial("PVRelatedProduct", Model)</div>*@
+           
+
+        </div>
+            <!--Khối bên phải-->
+        <div class="col-md-3 pro-section">
+            <div class="form-group">
+                @using (Html.BeginForm("ProductDetails", "Home", FormMethod.Get))
+                {
+                    <h4><strong>Số lượng</strong></h4>
+                    <p>
+                        @Html.TextBoxFor(model => model.quantity, new
+                        {
+                            @class = "form-control",
+                            @type = "number",
+                            @min = 1
+                        })
+                    </p>
+                    <h4><strong>Tạm tính</strong></h4>
+                    <p>@Model.estimatedValue</p>
+                    <p>
+                        @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "Cart", new
+                   { id = Model.product.ProductID, quantity = Model.quantity }, new
+                        {
+                   @class = "btn btn-info"
+                        }
+                   )
+                    </p>
+                }
+                <hr />
+            </div>
+            <hr />
+            @* Khối TopProduct *@
+            <div>@Html.Partial("PVTopProduct", Model)</div>
+        </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

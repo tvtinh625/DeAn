@@ -1,0 +1,180 @@
+﻿
+body {
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Điều chỉnh padding cho header */
+    border-bottom: 2px solid #eaeaea; /* Thay đổi độ dày đường viền */
+}
+
+    .header img {
+        height: 60px; /* Điều chỉnh kích thước logo */
+        transition: transform 0.3s; /* Hiệu ứng khi hover */
+    }
+
+        .header img:hover {
+            transform: scale(1.05); /* Phóng to logo khi hover */
+        }
+
+.nav {
+    display: flex;
+    gap: 30px; /* Tăng khoảng cách giữa các mục menu */
+}
+
+    .nav a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        padding: 10px 15px; /* Thêm padding cho các liên kết */
+        border-radius: 5px; /* Thêm bo góc cho các liên kết */
+        transition: background-color 0.3s; /* Hiệu ứng khi hover */
+    }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: #f0f0f0; /* Đổi màu nền khi hover hoặc active */
+            font-weight: 700; /* Làm nổi bật văn bản khi hover hoặc active */
+        }
+/* Thanh tìm kiếm */
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+    .search-cart input {
+        padding: 10px; /* Tăng kích thước padding */
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+        font-size: 16px; /* Tăng kích thước phông chữ */
+        transition: border-color 0.3s; /* Hiệu ứng khi focus */
+    }
+
+        .search-cart input:focus {
+            border-color: #e63946; /* Đổi màu viền khi focus */
+            outline: none; /* Ẩn outline */
+        }
+
+search-cart .cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.search-cart .cart i {
+    font-size: 24px; /* Tăng kích thước biểu tượng giỏ hàng */
+    color: #000;
+}
+
+.search-cart .cart .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+
+.banner {
+    position: relative;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+    .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        transition: transform 0.5s ease;
+    }
+
+.banner-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+    .banner-images img.active {
+        display: block;
+    }
+
+.banner-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+    .banner-controls button {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    .footer p, .footer a {
+        margin: 5px 0;
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+.footer-links {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .footer-links a {
+        margin: 0 10px;
+    }
+
+.social-icons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .social-icons a {
+        color: #fff;
+        font-size: 18px;
+    }

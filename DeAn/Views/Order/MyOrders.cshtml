@@ -1,0 +1,87 @@
+﻿@model List<DeAn.Models.ViewModel.MyOrdersVM>
+
+@{
+    ViewBag.Title = "My Orders";
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYAN-Trang chủ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link href="~/Content/MyCss/TrangChu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
+        <div class="nav">
+            <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+            <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+            <a href=@Url.Action("GioiThieu", "Home")>Giới thiệu</a>
+        </div>
+        <div class="search-cart">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <div class="cart">
+
+                <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
+            </div>
+
+            @if (Session["UserName"] == null)
+            {
+                <p><a href="@Url.Action("Login", "Account")">Đăng nhập</a></p> }
+            else
+            {
+                <p><a href="@Url.Action("Logout", "Account")">@Session["UserName"]</a></p>}
+        </div>
+        <a href="@Url.Action("MyOrders","Order",null)">lsmh</a>
+
+
+
+    </div>
+</body>
+</html>
+<h2>LỊCH SỬ MUA HÀNG</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tổng tiền</th>
+                <th>TT thanh toán</th>
+                <th>PT thanh toán</th>
+                <th>PT vận chuyển</th>
+                <th>Địa chỉ giao hàng</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết đơn hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                    <td>@order.TotalAmount.ToString("C")</td>
+                    <td>@order.PaymentStatus</td>
+                    <td>@order.PaymentMethod</td>
+                    <td>@order.ShippingMethod</td>
+                    <td>@order.ShippingAddress</td>
+                    <td>@order.OrderStatus</td> <!-- Hiển thị Order Status -->
+                    <td>
+                        @* Link to the order details page *@
+                        @Html.ActionLink("Chi tiết", "OrderSuccess", "Order", new { id = order.OrderID }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Bạn chưa đặt sản phẩm nào?</p>
+}
