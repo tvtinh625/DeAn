@@ -112,18 +112,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pro_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Customer">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -155,10 +143,6 @@
           <AssociationSet Name="FK__OrderDeta__Produ__440B1D61" Association="Self.FK__OrderDeta__Produ__440B1D61">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Customer" Association="Self.FK_User_Customer">
             <End Role="User" EntitySet="User" />

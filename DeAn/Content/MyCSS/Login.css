@@ -1,0 +1,92 @@
+﻿body {
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightgray; /* Màu nền trang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1px;
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff0000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content:safe center; /* Căn giữa */
+}
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+    }
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center; /* Căn giữa */
+    margin-top: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px; /* Khoảng cách giữa các biểu tượng */
+    transition: background-color 0.3s;
+}
+
+    .social-icon:hover {
+        background-color: #ddd; /* Thay đổi màu nền khi hover */
+    }
+
+.footer {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+    .footer a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .footer a:hover {
+            text-decoration: none; /* Không gạch chân khi hover */
+        }

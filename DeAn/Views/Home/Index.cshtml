@@ -1,46 +1,68 @@
 ﻿@model DeAn.Models.ViewModel.HomeProductVM
 @{
     ViewBag.Title = "Customer Home Page";
-    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css " />
 }
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RYAN-Trang chủ</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
-        <link href="~/Content/MyCss/TrangChu.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="header">
-            <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
-            <div class="nav">
-                <a href=@Url.Action("Index", "Home")>Trang chủ</a>
-                <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYAN-Trang chủ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link href="~/Content/MyCss/TrangChu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <img width="150" src="~/Content/Image/Logo.png" height="300" alt="Logo" />
+        <div class="nav">
+            <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+            <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+            <a href=@Url.Action("introduce", "Home")>Giới thiệu</a>
 
-            </div>
-            <div class="search-cart">
-                <input type="text" placeholder="Tìm kiếm sản phẩm..." />
-                <div class="cart">
-
-                    <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
-                </div>
-
-                @if (Session["UserName"] != null)
-                {
-                    <p><a href="@Url.Action("Logout", "Account")">@Session["UserName"]</a></p>}
-                else
-                {
-                    <p><a href="@Url.Action("Logout", "Account")">@Session["UserName"]</a></p>
-                }
-            </div>
-          
-               
-
-            
         </div>
-    <div class="banner">
+        <div>
+            <section class="search-section">
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    <div class="search-container">
+                        @Html.TextBoxFor(m => m.SearchTerm, new
+                        {
+                            @class = "search-input",
+                            placeholder = "Nhập tên, mô tả hoặc loại sản phẩm..."
+                        })
+                        <button type="submit" class="search-button">Tìm kiếm</button>
+                    </div>
+                }
+            </section>
+        </div>
+        <a href="@Url.Action("Index","Cart",null)">
+            <i class="fas fa-shopping-cart"></i>
+
+        </a>
+        <div>
+
+
+            @if (Session["UserName"] != null)
+            {
+
+                <p><a href="@Url.Action("Logout", "Account")">Đăng xuất</a>(@Session["UserName"])</p>}
+            else
+            {
+                <p><a href= "@Url.Action("Login", "Account")">Đăng nhập</a></p>  
+            }
+
+        </div>
+        <a href="@Url.Action("MyOrders","Order",null)">Lịch sử mua hàng</a>
+
+    </div>
+
+
+
+
+
+    <div class="banner" style="height:fit-content">
 
         <div class="banner-images">
             <img src="~/Content/Image/bia.png" alt="Banner Image 1" class="active" />
@@ -52,12 +74,11 @@
             <button class="next" onclick="changeBanner(1)">&#10095;</button>
         </div>
     </div>
-    <hr />
-    
 
-    @*@Html.Partial("PVFeatureProduct", Model)
+    @Html.Partial("PVNewProduct", Model)
+    <p>  @Html.Partial("PVFeatureProduct", Model)</p>
 
-    @Html.Partial("PVNewProduct", Model)*@
+
 
     <div class="footer">
         <p>© 2024 RYAN. All Rights Reserved.</p>

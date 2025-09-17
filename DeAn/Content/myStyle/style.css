@@ -1,36 +1,153 @@
-﻿section h2{
-    color: red;
-    text-align:center;
-}
-.feature-container {
-    display: flex;
-    gap: 10px;
-    inset-inline: initial;
-  
+﻿/*--------------- SẢN PHẨM NỔI BẬT ---------------*/
+.featureProd {
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: white;
 }
 
-.container-fluid ListProduct {
-    align-content: center;
-}
-.fproduct-item {
-    margin: 10px 0;
+    .featureProd h2 {
+        text-align: start;
+        color: black;
+        background-color: #FCDDEF;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+.feature-container {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
 }
-.fproduct-item a img{
-    width:60%;
+
+.fproduct-item {
+    width: 250px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 10px;
 }
+
+    .fproduct-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-bottom: 1px solid lightgrey;
+    }
+
+.prodPrice {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px;
+    color: #C92127;
+}
+
+.prodName {
+    font-size: 1.1em;
+    text-align: left;
+    margin: 10px;
+    color: black;
+}
+
+.prodCate {
+    font-size: 0.9em;
+    text-align: left;
+    margin: 10px;
+    color: dodgerblue;
+}
+
+.prodSale {
+    font-size: 0.9em;
+    text-align: left;
+    margin: 10px;
+    color: grey;
+}
+
+/*--------------- SẢN PHẨM MỚI ---------------*/
+.ListProduct {
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: white;
+}
+
+    .ListProduct h2 {
+        text-align: start;
+        color: black;
+        background-color: #cae7f3;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
 .list-container {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
 }
+
 .lproduct-item {
-    gap: 10px;
-   align-items:center;
-   align-content:end;
-    padding: 20px;
+    width: 250px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 10px;
 }
-.lproduct-item a img {
-        width: 60%;
+
+    .lproduct-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid lightgrey;
     }
+
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .pagination-container .pagination {
+        display: inline-flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .pagination-container .pagination li {
+            margin: 0 5px;
+        }
+
+            .pagination-container .pagination li a {
+                display: inline-block;
+                padding: 10px 15px;
+                color: darkgrey;
+                background-color: #f5f5f5;
+                border: 1px solid lightgrey;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1em;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .pagination-container .pagination li a:hover {
+                    background-color: #4CAF50;
+                    color: white;
+                }

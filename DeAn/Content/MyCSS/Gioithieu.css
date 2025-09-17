@@ -1,0 +1,232 @@
+﻿/* General reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Điều chỉnh padding cho header */
+    border-bottom: 2px solid #eaeaea; /* Thay đổi độ dày đường viền */
+}
+
+    .header img {
+        height: 60px; /* Điều chỉnh kích thước logo */
+        transition: transform 0.3s; /* Hiệu ứng khi hover */
+    }
+
+        .header img:hover {
+            transform: scale(1.05); /* Phóng to logo khi hover */
+        }
+
+.nav {
+    display: flex;
+    gap: 30px; /* Tăng khoảng cách giữa các mục menu */
+}
+
+    .nav a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        padding: 10px 15px; /* Thêm padding cho các liên kết */
+        border-radius: 5px; /* Thêm bo góc cho các liên kết */
+        transition: background-color 0.3s; /* Hiệu ứng khi hover */
+    }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: #f0f0f0; /* Đổi màu nền khi hover hoặc active */
+            font-weight: 700; /* Làm nổi bật văn bản khi hover hoặc active */
+        }
+/* Search and Cart */
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .search-cart input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+        width: 200px;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .search-cart input:focus {
+            border-color: #e63946; /* Đổi màu viền khi focus */
+            outline: none; /* Ẩn outline */
+        }
+
+    .search-cart .cart {
+        position: relative;
+        cursor: pointer;
+    }
+
+        .search-cart .cart i {
+            font-size: 24px; /* Tăng kích thước biểu tượng giỏ hàng */
+            color: #000;
+        }
+
+        .search-cart .cart .badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 5px;
+            font-size: 12px;
+        }
+
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 15px 40px;
+    font-size: 14px;
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+    .breadcrumb a {
+        text-decoration: none;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+
+        .breadcrumb a:hover {
+            color: #333;
+        }
+
+/* Content */
+.content {
+    display: flex;
+    padding: 20px 40px;
+    gap: 20px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 3;
+}
+
+    .main-content h1 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .main-content img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .main-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.sidebar-section {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+    .sidebar-section h2 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .sidebar ul li a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+    }
+
+        .sidebar ul li a:hover {
+            color: #e63946;
+        }
+
+.sidebar img {
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.sidebar video {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    .footer p, .footer a {
+        margin: 5px 0;
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+.footer-links {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .social-icons a {
+        color: #fff;
+        font-size: 18px;
+    }

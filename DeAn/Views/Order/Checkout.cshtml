@@ -51,6 +51,7 @@
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.ShippingAddress, new { @class = "form-control", @readonly = "readonly", @id = "shippingAddress" })
                 @Html.ValidationMessageFor(m => m.ShippingAddress)
+                @Html.HiddenFor(m => m.ShippingAddress)
                 <button type="button" class="btn btn-link" onclick="enableAddressEdit()">Chỉnh sửa</button>
             </div>
         </div>

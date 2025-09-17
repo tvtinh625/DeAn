@@ -68,12 +68,6 @@ namespace DeAn.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var cart = Session["Cart"] as List<CartItem>;
-                ////Nếu giỏ hàng rổng chueyern tới trang Home
-                //if (cart == null || !cart.Any()) { return RedirectToAction("Index", "Home"); }
-                ////Nếu ng dùng ch đăng nhập chuyển đén trang đăng nhập
-                //var user = db.Users.SingleOrDefault(u => u.Username == User.Identity.Name);
-                //if (user == null) { return RedirectToAction("Login", "Account"); }
                 var cart = GetCartService().GetCart();
                 if (cart.Items.Count() == 0)
                 {

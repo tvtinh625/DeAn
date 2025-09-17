@@ -32,5 +32,8 @@ namespace DeAn.Models.ViewModel
         
         public string Username { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
+
+        //public List<string> SavedAddresses { get; set; }  // Danh sách địa chỉ đã lưu
+        //public int? SelectedAddressIndex { get; set; }  // Chỉ mục địa chỉ đã chọn trong SavedAddresses
     }
 }

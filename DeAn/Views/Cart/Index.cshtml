@@ -44,7 +44,7 @@
         <div class="nav">
             <a href=@Url.Action("Index", "Home")>Trang chủ</a>
             <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
-        
+
         </div>
         <div class="search-cart">
             <input type="text" placeholder="Tìm kiếm sản phẩm..." />
@@ -62,10 +62,8 @@
         </div>
         <a href="@Url.Action("MyOrders","Order",null)">Lịch sử mua hàng</a>
 
-
+        </div>
 </body>
-
-    </div>
 <script language="JavaScript">
     function cartUpdateQuantity(id, newQuantity) {
         if (newQuantity < 1) return; // Không cho phép số lượng nhỏ hơn 1
@@ -87,7 +85,9 @@
 
         document.body.appendChild(form);
         form.submit();
+
     }
+
 </script>
 @using (Html.BeginForm("Index", "Cart", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -106,9 +106,9 @@
                             <th>Số lượng</th>
                             <th>Đơn giá</th>
                             <th>Thành tiền</th>
-                            @*<th title="Xóa tất cả mặt hàng trong giỏ">
-                                <a href="@Url.Action("ClearCart","Cart", null )"><img src="~/Content/img/logo.jpg" style="max-height:20px" /></a>*@
-                            <th>Xóa</th>
+                            <th title="Xóa tất cả mặt hàng trong giỏ"><a href="@Url.Action("ClearCart", "Cart")">
+                              @*<img src="~/Content/img/logo.jpg" style="max-height:20px" />*@Xóa tất cả</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,7 +130,7 @@
                                 <td>@item.TotalPrice.ToString("N0")</td>
                                 <td>
                                     <a href="@Url.Action("RemoveFromCart", "Cart", new { id = item.ProductID })">
-                                        @*<img src="~/Content/img/logo.jpg" style="max-height:20px;" />*@Xóa
+                                        @*<img src="~/Content/img/logo.jpg" style="max-height:20px;" />*@ Xóa
                                     </a>
                                 </td>
                             </tr>
@@ -139,15 +139,15 @@
                 </table>
                 <hr />
             </div>
+            <br /><div><strong>Tổng giá trị:&nbsp;<span style="color:red;">@Model.TotalValue().ToString("N0")</span></strong></div><br />
+            <div class="col-md-1"><p><a href="@Url.Action("Checkout", "Order", null)" class="btn btn-primary">Mua hàng</a></p> </div>
+            <div>
 
+            </div>
         }
     </div>
     <div class="col-md-3 cart-section">
-        <br /><div><strong>Tổng giá trị:&nbsp;<span style="color:red;">@Model.TotalValue().ToString("N0")</span></strong></div><br />
-        <div class="col-md-1"><p><a href="@Url.Action("Checkout", "Order", null)" class="btn btn-primary">Mua hàng</a></p> </div>
-        <div>
-
-        </div>
+       
         <div class="col-md-12">@Html.ActionLink("Tiếp tục mua hàng", "Index", "Home", null, new { @class = "btn btn-waring cart-button" })</div>
     </div>
 

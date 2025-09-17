@@ -2,10 +2,11 @@
 @{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @*<link rel="stylesheet" type="text/css" href="~/Content/myStyle/StyleSP.css" />*@
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css " />
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle/StyleSP.css" />
 }
 <style>
-   
+
     body {
         font-family: 'Roboto', sans-serif;
         margin: 0;
@@ -107,7 +108,6 @@
             height: 100%;
             object-fit: contain;
             object-position: center;
-      
         }
 
     .banner-images img {
@@ -129,7 +129,6 @@
         justify-content: space-between;
         transform: translateY(-50%);
     }
-
 </style>
 <html>
 <head>
@@ -138,7 +137,7 @@
     </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-    <link href="~/Content/MyCss/SanPham.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="header">
@@ -146,17 +145,29 @@
         <div class="nav">
             <a href=@Url.Action("Index", "Home")>Trang chủ</a>
             <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
-  
+            <a href=@Url.Action("introduce", "Home")>Giới thiệu</a>
         </div>
         <div class="search-cart">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
-            <div class="cart">
+            <section class="search-section col-md-10 btn-sm" >
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    <div class="search-container">
+                        @Html.TextBoxFor(m => m.SearchTerm, new
+                        {
+                            @class = "search-input",
+                            placeholder = "Nhập tên, mô tả hoặc loại sản phẩm..."
+                        })
+                        <button type="submit" class="search-button">Tìm kiếm</button>
+                    </div>
+                }
+            </section>            <div class="cart">
                 <i class="fas fa-shopping-cart"></i>
 
                 <a href="@Url.Action("Index","Cart",null)">Giỏ hàng</a>
 
             </div>
-            <div>
+            
                 <a href="@Url.Action("Login","Account",null)">
                     @if (Session["UserName"] != null)
                     {
@@ -165,8 +176,7 @@
                     {
                         <p>Đăng nhập</p>}
                 </a>
-            </div>
-            <a href="@Url.Action("MyOrders","Order",null)">Lịch sử mua hàng</a>
+            
         </div>
     </div>
     <div class="banner">
@@ -185,7 +195,7 @@
 
 
     @Html.Partial("PVNewProduct", Model)
-    @Html.Partial("PVFeatureProduct", Model)
+
     <script>
         let currentIndex = 0;
 

@@ -55,7 +55,7 @@ namespace DeAn.Controllers
                 db.Customers.Add(customer);
                 // luu thong tin tai khoan vao csdl
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             return View(model);
         }
@@ -83,7 +83,7 @@ namespace DeAn.Controllers
 
                     // lưu thông tin xác thực người dùng cookie
                     FormsAuthentication.SetAuthCookie(user.Username, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Cart");
                 }
                 else
                 {

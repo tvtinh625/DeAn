@@ -1,0 +1,88 @@
+﻿@model DeAn.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "introduce";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/myStyle/CustomerHome.css" />
+}
+
+<html>
+<head>
+    <title>RYAN-Make things</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/MyCss/GioiThieu.css" />
+</head>
+<body>
+    <div class="header">
+        <img src="~/Content/Image/Logo.png" alt="Logo" />
+        <div class="nav">
+            <a href=@Url.Action("Index", "Home")>Trang chủ</a>
+            <a href=@Url.Action("Product", "Home")>Sản phẩm</a>
+            <a href=@Url.Action("introduce", "Home")>Giới thiệu</a>
+        </div>
+
+
+
+        <div class="search-cart">
+            <div>
+
+
+                @if (Session["UserName"] != null)
+                {
+
+                    <p><a href="@Url.Action("Logout", "Account")">Đăng xuất</a>(@Session["UserName"])</p>}
+                else
+                {
+                    <p><a href="@Url.Action("Login", "Account")">Đăng nhập</a></p>
+                }
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="content">
+        <div class="main-content">
+            <h1>Một chút xinh đẹp tại RYAN</h1>
+            <img src="~/Content/Image/bia2.png" alt="Main content image" />
+            <p>
+                <h4>
+                    Chào bạn.
+                    Giữa 800 triệu cửa hàng quần áo trong thành phố mênh mông rộng lớn này, bạn đã tìm được Ryan, đó chính là định mệnh.
+                    Nếu chúng ta đã có duyên đến thế, sao bạn không lượn vào page ngắm nghía một vòng xem, biết đâu ghiền mua rồi mua nữa mua hoài mua mãi thì sao?
+                    Ở Ryan, tụi mình chăm chút kĩ lưỡng từng chi tiết từ vải vóc, chất liệu, màu sắc, thiết kế, gói ghém, và đặc biệt là xưởng may của gia đình nên vô cùng yên tâm
+                </h4>
+            </p>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h2>Danh mục page</h2>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">TRANG CHỦ</a></li>
+                    <li><a href="@Url.Action("Product", "Home")">SẢN PHẨM</a></li>
+
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <video controls autoplay loop muted>
+                    <source src="~/Content/Video/SIGNATURE SHIRTS - Trim.mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2024 RYAN. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">Chính sách bảo mật</a> |
+            <a href="#">Điều khoản sử dụng</a> |
+            <a href="#">Hỗ trợ</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="footer-contact">Liên hệ: 0909-xxx-xxx | Email: support@ryan.vn</p>
+    </div>
+</body>
+</html>

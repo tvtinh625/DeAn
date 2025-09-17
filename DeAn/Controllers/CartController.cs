@@ -34,11 +34,17 @@ namespace DeAn.Controllers
             return RedirectToAction("Index");
                     
         }
+ 
         //Xóa
-        public ActionResult RemoveFormCart(int id)
+        public ActionResult RemoveFromCart(int id)
         {
             var cartService = GetCartService();
             cartService.GetCart().RemoveItem(id);
+            return RedirectToAction("Index");
+        }
+        public ActionResult ClearCart()
+        {
+            GetCartService().ClearCart();
             return RedirectToAction("Index");
         }
         [HttpPost]

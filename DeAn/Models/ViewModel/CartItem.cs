@@ -13,5 +13,5 @@ namespace DeAn.Models.ViewModel
         public decimal UnitPrice { get; set; }
         public string ProductImage { get; set; }
         public decimal TotalPrice => Quantity * UnitPrice;
-    }
+    } 
 }

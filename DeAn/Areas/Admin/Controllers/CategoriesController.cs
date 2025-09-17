@@ -41,16 +41,22 @@ namespace DeAn.Areas.Admin.Controllers
         {
             return View();
         }
-
         // POST: Admin/Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryID,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra nếu tên danh mục đã tồn tại trong cơ sở dữ liệu
+                bool isCategoryExist = db.Categories.Any(c => c.CategoryName == category.CategoryName);
+                if (isCategoryExist)
+                {
+                    // Thêm lỗi vào ModelState nếu tên danh mục đã tồn tại
+                    ModelState.AddModelError("CategoryName", "Tên danh mục đã tồn tại.");
+                    return View(category);
+                }
+
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -73,16 +79,22 @@ namespace DeAn.Areas.Admin.Controllers
             }
             return View(category);
         }
-
         // POST: Admin/Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryID,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra nếu tên danh mục mới đã tồn tại trong cơ sở dữ liệu, ngoại trừ danh mục hiện tại
+                bool isCategoryExist = db.Categories.Any(c => c.CategoryName == category.CategoryName && c.CategoryID != category.CategoryID);
+                if (isCategoryExist)
+                {
+                    // Thêm lỗi vào ModelState nếu tên danh mục đã tồn tại
+                    ModelState.AddModelError("CategoryName", "Tên danh mục đã tồn tại.");
+                    return View(category);
+                }
+
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -104,18 +116,29 @@ namespace DeAn.Areas.Admin.Controllers
             }
             return View(category);
         }
-
         // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            // Tìm danh mục cần xóa
             Category category = db.Categories.Find(id);
+            // Kiểm tra xem danh mục này có sản phẩm nào đang sử dụng không
+            bool isCategoryInUse = db.Products.Any(p => p.CategoryID == id);
+            if (isCategoryInUse)
+            {
+                // Nếu có sản phẩm sử dụng danh mục này, không cho phép xóa
+                ModelState.AddModelError("", "Không thể xóa danh mục này vì nó đang được sử dụng trong một hoặc nhiều sản phẩm.");
+                return View(category); // Trả về trang chi tiết danh mục với thông báo lỗi
+            }
+
+            // Nếu không có sản phẩm nào sử dụng, thực hiện xóa
             db.Categories.Remove(category);
             db.SaveChanges();
+
+            // Quay lại trang danh sách danh mục
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -83,6 +83,9 @@ namespace DeAn.Controllers
         {
             return View();
         }
-      
+      public ActionResult introduce()
+        {
+            return View();
+        }
     }
 }

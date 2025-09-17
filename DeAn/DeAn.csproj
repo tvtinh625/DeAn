@@ -206,6 +206,9 @@
     <Content Include="Content\Image\bia.png" />
     <Content Include="Content\Image\bia2.png" />
     <Content Include="Content\Image\Logo.png" />
+    <Content Include="Content\MyCSS\Gioithieu.css" />
+    <Content Include="Content\MyCSS\Login.css" />
+    <Content Include="Content\MyCSS\SP1.css" />
     <Content Include="Content\myStyle\CustomerDetailProduct.css" />
     <Content Include="Content\myStyle\CustomerHome.css" />
     <Content Include="Content\myStyle\style.css" />
@@ -214,6 +217,7 @@
     <Content Include="Content\T-Shirt\ao.png" />
     <Content Include="Content\T-Shirt\ao2.png" />
     <Content Include="Content\T-Shirt\SP.css" />
+    <Content Include="Content\Video\SIGNATURE SHIRTS - Trim.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -296,13 +300,11 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
-    <Content Include="Views\Home\Store.cshtml" />
+    <Content Include="Views\Home\introduce.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Cart\ClearCart.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Order\OrderSuccess.cshtml" />
-    <Content Include="Views\Cart\RemoveFormCart.cshtml" />
     <Content Include="Views\Order\MyOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
